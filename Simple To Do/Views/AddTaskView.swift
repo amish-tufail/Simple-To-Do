@@ -10,6 +10,7 @@ import SwiftUI
 struct AddTaskView: View {
     @State private var title: String = ""
     @State private var animate: Bool = false
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
             VStack {
@@ -37,7 +38,7 @@ struct AddTaskView: View {
                         .opacity(animate ? 1.0 : 0.0)
                         .offset(y: animate ? 0.0 : 600.0)
                     Button {
-                        print("task added")
+                        dismiss()
                     } label: {
                         Text("Add Task")
                             .font(.system(.body, design: .monospaced, weight: .semibold))
@@ -63,13 +64,25 @@ struct AddTaskView: View {
                 .offset(y: animate ? 0.0 : 600.0)
                 Spacer()
             }
+            VStack {
+                Spacer()
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark.circle")
+                        .imageScale(.large)
+                        .font(.system(.title2, design: .monospaced, weight: .semibold))
+                        .foregroundColor(.black)
+                        .padding()
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Color(hue: 0.086, saturation: 0.141, brightness: 0.972)
         )
         .onAppear {
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: 0.25)) {
                 animate = true
             }
         }
