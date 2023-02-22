@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import ObjectiveC
 
 struct AddTaskView: View {
+    let feedback = UIImpactFeedbackGenerator()
     @State private var title: String = ""
     @State private var animate: Bool = false
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var realmManager: RealmManager
+    @ObservedObject private var keyboardResponder = KeyboardResponder() // This is for the keyboard issue
     var body: some View {
         ZStack {
             VStack {
@@ -38,6 +42,11 @@ struct AddTaskView: View {
                         .opacity(animate ? 1.0 : 0.0)
                         .offset(y: animate ? 0.0 : 600.0)
                     Button {
+                        if title != "" {
+                            realmManager.addTask(taskTitle: title)
+                        }
+                        playSound(sound: "sound-ding", type: "mp3")
+                        let feedback = UIImpactFeedbackGenerator()
                         dismiss()
                     } label: {
                         Text("Add Task")
@@ -64,9 +73,12 @@ struct AddTaskView: View {
                 .offset(y: animate ? 0.0 : 600.0)
                 Spacer()
             }
+            .padding(.bottom, keyboardResponder.currentHeight) // This is for the keyboard issue
             VStack {
                 Spacer()
                 Button {
+                    let feedback = UIImpactFeedbackGenerator()
+                    playSound(sound: "sound-ding", type: "mp3")
                     dismiss()
                 } label: {
                     Image(systemName: "xmark.circle")
@@ -86,11 +98,15 @@ struct AddTaskView: View {
                 animate = true
             }
         }
+        .environmentObject(keyboardResponder) // This is for the keyboard issue
     }
 }
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
         AddTaskView()
+            .environmentObject(RealmManager())
     }
 }
+
+

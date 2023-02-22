@@ -14,6 +14,7 @@ class RealmManager: ObservableObject {
     @Published private(set) var tasks: [Task] = []
     init() {
         openRealm()
+        getTask()
     }
     func openRealm() {
         do {
@@ -67,17 +68,16 @@ class RealmManager: ObservableObject {
     func deleteTask(id: ObjectId) {
         if let localRealm = localRealm {
             do {
-                let taskToDelete = localRealm.objects(Task.self).filter(NSPredicate(format: "id == %@", id)) // This returns the specified task with the id to update
-                guard !taskToUpdate.isEmpty else {
-                    return
-                }
+                let taskToDelete = localRealm.objects(Task.self).filter(NSPredicate(format: "id == %@", id))
+                guard !taskToDelete.isEmpty else { return }
+                
                 try localRealm.write {
                     localRealm.delete(taskToDelete)
                     getTask()
-                    print("Task deleted with id: \(id)")
+                    print("Deleted task with id \(id)")
                 }
             } catch {
-                print(error.localizedDescription)
+                print("Error deleting task \(id) to Realm: \(error)")
             }
         }
     }

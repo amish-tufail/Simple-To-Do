@@ -11,6 +11,11 @@
 		EE96706C29A533F900312AB9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EE96706B29A533F900312AB9 /* RealmSwift */; };
 		EE96706F29A5348700312AB9 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96706E29A5348700312AB9 /* RealmManager.swift */; };
 		EE96707129A5365200312AB9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96707029A5365200312AB9 /* Task.swift */; };
+		EE96707529A5BF3800312AB9 /* sound-tap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EE96707229A5BF3800312AB9 /* sound-tap.mp3 */; };
+		EE96707629A5BF3800312AB9 /* sound-ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EE96707329A5BF3800312AB9 /* sound-ding.mp3 */; };
+		EE96707729A5BF3800312AB9 /* sound-rise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EE96707429A5BF3800312AB9 /* sound-rise.mp3 */; };
+		EE96707A29A5C07F00312AB9 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96707929A5C07F00312AB9 /* SoundPlayer.swift */; };
+		EE96707D29A5C84300312AB9 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96707C29A5C84300312AB9 /* KeyboardResponder.swift */; };
 		EE9F6C2129A51DF70013AEDC /* Simple_To_DoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F6C2029A51DF70013AEDC /* Simple_To_DoApp.swift */; };
 		EE9F6C2329A51DF70013AEDC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9F6C2229A51DF70013AEDC /* ContentView.swift */; };
 		EE9F6C2529A51DF80013AEDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE9F6C2429A51DF80013AEDC /* Assets.xcassets */; };
@@ -24,6 +29,11 @@
 /* Begin PBXFileReference section */
 		EE96706E29A5348700312AB9 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		EE96707029A5365200312AB9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		EE96707229A5BF3800312AB9 /* sound-tap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-tap.mp3"; sourceTree = "<group>"; };
+		EE96707329A5BF3800312AB9 /* sound-ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-ding.mp3"; sourceTree = "<group>"; };
+		EE96707429A5BF3800312AB9 /* sound-rise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sound-rise.mp3"; sourceTree = "<group>"; };
+		EE96707929A5C07F00312AB9 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		EE96707C29A5C84300312AB9 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		EE9F6C1D29A51DF70013AEDC /* Simple To Do.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple To Do.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE9F6C2029A51DF70013AEDC /* Simple_To_DoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_To_DoApp.swift; sourceTree = "<group>"; };
 		EE9F6C2229A51DF70013AEDC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +67,25 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		EE96707829A5BF3D00312AB9 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				EE96707329A5BF3800312AB9 /* sound-ding.mp3 */,
+				EE96707429A5BF3800312AB9 /* sound-rise.mp3 */,
+				EE96707229A5BF3800312AB9 /* sound-tap.mp3 */,
+				EE96707929A5C07F00312AB9 /* SoundPlayer.swift */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		EE96707B29A5C82600312AB9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EE96707C29A5C84300312AB9 /* KeyboardResponder.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		EE9F6C1429A51DF70013AEDC = {
 			isa = PBXGroup;
 			children = (
@@ -80,7 +109,9 @@
 				EE9F6C3029A51E720013AEDC /* Views */,
 				EE9F6C3129A51F390013AEDC /* Components */,
 				EE96706D29A5346E00312AB9 /* Realm */,
+				EE96707B29A5C82600312AB9 /* Utilities */,
 				EE9F6C2429A51DF80013AEDC /* Assets.xcassets */,
+				EE96707829A5BF3D00312AB9 /* Sounds */,
 				EE9F6C2629A51DF80013AEDC /* Preview Content */,
 			);
 			path = "Simple To Do";
@@ -186,6 +217,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE96707729A5BF3800312AB9 /* sound-rise.mp3 in Resources */,
+				EE96707629A5BF3800312AB9 /* sound-ding.mp3 in Resources */,
+				EE96707529A5BF3800312AB9 /* sound-tap.mp3 in Resources */,
 				EE9F6C2829A51DF80013AEDC /* Preview Assets.xcassets in Resources */,
 				EE9F6C2529A51DF80013AEDC /* Assets.xcassets in Resources */,
 			);
@@ -201,7 +235,9 @@
 				EE96707129A5365200312AB9 /* Task.swift in Sources */,
 				EE9F6C2F29A51E690013AEDC /* TaskView.swift in Sources */,
 				EE9F6C3629A520220013AEDC /* AddTaskView.swift in Sources */,
+				EE96707D29A5C84300312AB9 /* KeyboardResponder.swift in Sources */,
 				EE9F6C2329A51DF70013AEDC /* ContentView.swift in Sources */,
+				EE96707A29A5C07F00312AB9 /* SoundPlayer.swift in Sources */,
 				EE9F6C3829A529420013AEDC /* SmallAddButton.swift in Sources */,
 				EE9F6C2129A51DF70013AEDC /* Simple_To_DoApp.swift in Sources */,
 				EE96706F29A5348700312AB9 /* RealmManager.swift in Sources */,
@@ -334,6 +370,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Simple To Do/Preview Content\"";
+				DEVELOPMENT_TEAM = ZC8Z8DCUY6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -362,6 +399,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Simple To Do/Preview Content\"";
+				DEVELOPMENT_TEAM = ZC8Z8DCUY6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
