@@ -11,7 +11,7 @@ import RealmSwift
 class RealmManager: ObservableObject {
     // 1. Think realm as a box which we need to open to store data
     private(set) var localRealm: Realm? // private(set) means we can set this only in this class
-    @Published private(set) var tasks: [Task] = []
+    @Published var tasks: [Task] = []
     init() {
         openRealm()
         getTask()
@@ -41,7 +41,7 @@ class RealmManager: ObservableObject {
     }
     func getTask() {
         if let localRealm = localRealm {
-            let allTasks = localRealm.objects(Task.self).sorted(byKeyPath: "completed")
+            let allTasks = localRealm.objects(Task.self).sorted(byKeyPath: "completed") 
             tasks = []
             allTasks.forEach { task in
                 tasks.append(task)

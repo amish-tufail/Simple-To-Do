@@ -16,6 +16,14 @@ struct TaskView: View {
                 .font(.system(.title, design: .monospaced, weight: .bold))
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: 2.0, style: .continuous)
+                        .frame(width: 137.0, height: 2.0)
+                        .padding(.top, -15.0)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
+                        .offset(y: 35.0)
+                )
             List {
                 if realmManager.tasks.count == 0 {
                     Text("")
@@ -44,16 +52,26 @@ struct TaskView: View {
                             }
                     }
                 }
+                .onMove(perform: move) // To move list
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color(red: 232.0/255.0, green: 213.0/255.0, blue: 196.0/255.0))
             }
 //            .background(.clear)
             .scrollContentBackground(.hidden)
+//            .toolbar {
+//                ToolbarItem {
+//                    EditButton()
+//                }
+//            } // No need
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Color(hue: 0.086, saturation: 0.141, brightness: 0.972)
         )
+    }
+    
+    func move(from source: IndexSet, to destination: Int) { // Move list function
+        realmManager.tasks.move(fromOffsets: source, toOffset: destination)
     }
 }
 
@@ -64,4 +82,3 @@ struct TaskView_Previews: PreviewProvider {
     }
 }
 
-// UI
